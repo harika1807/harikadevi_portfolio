@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harikadevi Seelam | Software Developer & AI Enthusiast</title>
+    <meta name="description" content="Portfolio of Harikadevi Seelam - Final-year CSE student specializing in full-stack development, AI/ML, and building scalable applications. Experienced in Java, Python, React, and Spring Boot." />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          darkMode: ['class'],
+          theme: {
+            extend: {
+              colors: {
+                border: "hsl(var(--border))",
+                input: "hsl(var(--input))",
+                ring: "hsl(var(--ring))",
+                background: "hsl(var(--background))",
+                foreground: "hsl(var(--foreground))",
+                primary: {
+                  DEFAULT: "hsl(var(--primary))",
+                  foreground: "hsl(var(--primary-foreground))",
+                },
+                secondary: {
+                  DEFAULT: "hsl(var(--secondary))",
+                  foreground: "hsl(var(--secondary-foreground))",
+                },
+                destructive: {
+                  DEFAULT: "hsl(var(--destructive))",
+                  foreground: "hsl(var(--destructive-foreground))",
+                },
+                muted: {
+                  DEFAULT: "hsl(var(--muted))",
+                  foreground: "hsl(var(--muted-foreground))",
+                },
+                accent: {
+                  DEFAULT: "hsl(var(--accent))",
+                  foreground: "hsl(var(--accent-foreground))",
+                },
+                popover: {
+                  DEFAULT: "hsl(var(--popover))",
+                  foreground: "hsl(var(--popover-foreground))",
+                },
+                card: {
+                  DEFAULT: "hsl(var(--card))",
+                  foreground: "hsl(var(--card-foreground))",
+                },
+              },
+              borderRadius: {
+                lg: "var(--radius)",
+                md: "calc(var(--radius) - 2px)",
+                sm: "calc(var(--radius) - 4px)",
+              },
+              keyframes: {
+                "fade-in": { "0%": { opacity: "0", transform: "translateY(20px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+                "fade-in-up": { "0%": { opacity: "0", transform: "translateY(30px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+                "scale-in": { "0%": { opacity: "0", transform: "scale(0.95)" }, "100%": { opacity: "1", transform: "scale(1)" } },
+                "float": { "0%, 100%": { transform: "translateY(0px)" }, "50%": { transform: "translateY(-20px)" } },
+              },
+              animation: {
+                "fade-in": "fade-in 0.6s ease-out",
+                "fade-in-up": "fade-in-up 0.8s ease-out",
+                "scale-in": "scale-in 0.5s ease-out",
+                "float": "float 3s ease-in-out infinite",
+              },
+              backgroundImage: {
+                "gradient-hero": "var(--gradient-hero)",
+                "gradient-card": "var(--gradient-card)",
+              },
+              boxShadow: {
+                "glow": "var(--shadow-glow)",
+                "card": "var(--shadow-card)",
+              },
+            },
+          },
+        }
+    </script>
+
+    <style>
+      /* Base Colors (Light Theme from src/index.css) */
+      :root {
+        --background: 240 20% 99%;
+        --foreground: 240 10% 10%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 10%;
+        --primary: 262 83% 58%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 100% 50%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 240 5% 96%;
+        --muted-foreground: 240 4% 46%;
+        --accent: 280 100% 70%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 240 6% 90%;
+        --input: 240 6% 90%;
+        --ring: 262 83% 58%;
+        --radius: 1rem;
+        --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(280 100% 70%) 50%, hsl(210 100% 50%) 100%);
+        --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.2);
+        --shadow-card: 0 4px 20px hsl(240 10% 10% / 0.08);
+      }
+
+      /* Dark Mode Styles (from src/index.css) - Activated by adding class="dark" to <html> or any parent */
+      .dark {
+        --background: 240 20% 8%;
+        --foreground: 240 5% 96%;
+        --card: 240 15% 12%;
+        --card-foreground: 240 5% 96%;
+        --primary: 262 83% 58%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 100% 50%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 240 10% 20%;
+        --muted-foreground: 240 5% 65%;
+        --accent: 280 100% 70%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 62% 50%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 240 10% 20%;
+        --input: 240 10% 20%;
+        --ring: 262 83% 58%;
+        --gradient-hero: linear-gradient(135deg, hsl(262 83% 48%) 0%, hsl(280 100% 60%) 50%, hsl(210 100% 40%) 100%);
+        --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
+        --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+      }
+
+      /* Global Apply (from src/index.css) */
+      body {
+        @apply bg-background text-foreground;
+      }
+
+      /* Base button styles for utility links - simulating shadcn button variants */
+      .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          border-radius: 0.375rem; /* rounded-md */
+          font-weight: 500; /* font-medium */
+          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+          transition-duration: 300ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          height: 2.5rem; /* h-10 */
+          padding-left: 1rem; /* px-4 */
+          padding-right: 1rem; /* px-4 */
+          padding-top: 0.5rem; /* py-2 */
+          padding-bottom: 0.5rem; /* py-2 */
+      }
+      .btn-lg {
+          height: 2.75rem; /* h-11 */
+          padding-left: 2rem; /* px-8 */
+          padding-right: 2rem; /* px-8 */
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen">
+
+    <header class="sticky top-0 z-20 bg-background/90 backdrop-blur-sm border-b border-border">
+      <div class="container mx-auto px-4 py-4">
+        <nav class="flex items-center justify-between">
+          <a href="#hero" class="text-xl font-bold text-primary">Harikadevi</a>
+          <div class="hidden md:flex space-x-6">
+            <a href="#about" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">About</a>
+            <a href="#skills" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Skills</a>
+            <a href="#coding-profiles" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Profiles</a>
+            <a href="#projects" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Projects</a>
+            <a href="#experience" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Experience</a>
+            <a href="#contact" class="text-sm font-medium text-primary hover:text-primary/80 transition-colors btn">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-float" style="animation-delay: 1s;"></div>
+      </div>
+
+      <div class="container mx-auto px-4 py-20 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div class="flex-1 text-center lg:text-left space-y-6 animate-fade-in">
+            <div class="inline-block">
+              <span class="text-primary-foreground/80 text-lg font-medium">Hello, I'm</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
+              Harikadevi
+              <span class="block text-accent">Seelam</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-primary-foreground/90 font-light">
+              Software Developer & AI Enthusiast
+            </p>
+            <p class="text-lg text-primary-foreground/80 max-w-2xl">
+              Final-year CSE student specializing in full-stack development, AI/ML, and building scalable applications with Java, Python, and modern web technologies.
+            </p>
+
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+              <a href="https://github.com/harika1807" target="_blank" rel="noopener noreferrer" class="btn btn-lg bg-primary-foreground/10 border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path><path d="M15 9h-2a2 2 0 0 0 2 2v-2zM9 9h2a2 2 0 0 1-2 2v-2z"></path></svg>
+                GitHub
+              </a>
+              <a href="http://www.linkedin.com/in/harika-devi-seelam-242709256" target="_blank" rel="noopener noreferrer" class="btn btn-lg bg-primary-foreground/10 border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+              <a href="https://leetcode.com/u/harikaseelam/" target="_blank" rel="noopener noreferrer" class="btn btn-lg bg-primary-foreground/10 border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M10 20c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10z"></path><path d="M10 3v14"></path><path d="M16 10H4"></path></svg>
+                LeetCode
+              </a>
+              <a href="https://www.hackerrank.com/profile/harikaseelam2004" target="_blank" rel="noopener noreferrer" class="btn btn-lg bg-primary-foreground/10 border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-glow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M12 19.5c.732 0 1.341-.54 1.488-1.25H16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-3.488a1.487 1.487 0 0 1-1.488-1.25V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3.488c.147.71 1.056 1.25 1.488 1.25H8a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4.488c.147.71.756 1.25 1.488 1.25z"></path></svg>
+                HackerRank
+              </a>
+            </div>
+
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-6">
+              <a href="#projects" class="btn btn-lg bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                View My Work
+              </a>
+              <a href="#contact" class="btn btn-lg bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300" style="border-color: hsl(var(--primary-foreground)/.7)">
+                Get In Touch
+              </a>
+            </div>
+          </div>
+
+          <div class="flex-shrink-0 animate-scale-in">
+            <div class="relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary rounded-full blur-2xl opacity-50 animate-pulse"></div>
+              <img src="src/assets/profile-photo.jpg" alt="Harikadevi Seelam" class="relative w-72 h-72 md:w-96 md:h-96 rounded-full object-cover border-4 border-primary-foreground shadow-2xl" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex items-start justify-center p-2">
+          <div class="w-1 h-3 bg-primary-foreground/50 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 bg-background">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 animate-fade-in-up">
+            About <span class="text-primary">Me</span>
+          </h2>
+          
+          <div class="bg-card rounded-3xl p-8 md:p-12 shadow-card border border-border animate-fade-in">
+            <p class="text-lg text-muted-foreground leading-relaxed mb-6">
+              I'm a final-year Computer Science Engineering student with a strong passion for software development and artificial intelligence. With a <span class="text-primary font-semibold">CGPA of 8.6</span>, I've built a solid foundation in programming and problem-solving.
+            </p>
+            
+            <p class="text-lg text-muted-foreground leading-relaxed mb-6">
+              My expertise spans across <span class="text-primary font-semibold">full-stack development</span>, where I've created applications using React.js, Node.js, and Spring Boot, and <span class="text-primary font-semibold">machine learning</span>, where I've developed AI models achieving up to 98.7% accuracy.
+            </p>
+            
+            <p class="text-lg text-muted-foreground leading-relaxed mb-6">
+              During my internship at <span class="text-primary font-semibold">CodeClause as an AI Intern</span>, I optimized Python modules, automated workflows (reducing manual effort by 40+ hours), and delivered performance reports that enhanced project accuracy.
+            </p>
+            
+            <p class="text-lg text-muted-foreground leading-relaxed">
+              I'm actively seeking <span class="text-primary font-semibold">entry-level software development roles</span> where I can apply my technical skills, contribute to innovative projects, and continue growing as a developer. Let's build something amazing together!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-muted/30">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 animate-fade-in-up">
+          Technical <span class="text-primary">Skills</span>
+        </h2>
+        <p class="text-center text-muted-foreground mb-12 text-lg">
+          My technical expertise and proficiency levels
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div class="bg-card rounded-2xl p-8 shadow-card border border-border hover:shadow-glow transition-all duration-300 animate-fade-in" style="animation-delay: 0s;">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="p-3 bg-primary/10 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+              </div>
+              <h3 class="text-xl font-semibold text-foreground">
+                Programming Languages
+              </h3>
+            </div>
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">Java</span>
+                  <span class="text-sm text-muted-foreground">90%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">Python</span>
+                  <span class="text-sm text-muted-foreground">85%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">C/C++</span>
+                  <span class="text-sm text-muted-foreground">80%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">JavaScript</span>
+                  <span class="text-sm text-muted-foreground">75%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 75%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-card rounded-2xl p-8 shadow-card border border-border hover:shadow-glow transition-all duration-300 animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="p-3 bg-primary/10 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+              </div>
+              <h3 class="text-xl font-semibold text-foreground">
+                Web Technologies
+              </h3>
+            </div>
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">HTML/CSS</span>
+                  <span class="text-sm text-muted-foreground">85%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">React.js</span>
+                  <span class="text-sm text-muted-foreground">80%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">Node.js</span>
+                  <span class="text-sm text-muted-foreground">75%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">Spring Boot</span>
+                  <span class="text-sm text-muted-foreground">80%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 80%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-card rounded-2xl p-8 shadow-card border border-border hover:shadow-glow transition-all duration-300 animate-fade-in" style="animation-delay: 0.2s;">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="p-3 bg-primary/10 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M21 12c0 1.657-4.03 3-9 3s-9-1.343-9-3"></path></svg>
+              </div>
+              <h3 class="text-xl font-semibold text-foreground">
+                Database & Tools
+              </h3>
+            </div>
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">SQL</span>
+                  <span class="text-sm text-muted-foreground">85%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">MySQL</span>
+                  <span class="text-sm text-muted-foreground">85%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">Git/GitHub</span>
+                  <span class="text-sm text-muted-foreground">90%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">Postman</span>
+                  <span class="text-sm text-muted-foreground">80%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 80%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-card rounded-2xl p-8 shadow-card border border-border hover:shadow-glow transition-all duration-300 animate-fade-in" style="animation-delay: 0.3s;">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="p-3 bg-primary/10 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><path d="M12 2a4 4 0 0 0-4 4c0 1.8 1 3.5 3 4.5l-2.7 2.7c-1.3 1.3-1.3 3.3 0 4.6s3.3 1.3 4.6 0l2.7-2.7c1 2 2.7 3 4.5 3 1.8 0 3.5-1 4.5-3l2.7-2.7c1.3-1.3 1.3-3.3 0-4.6s-3.3-1.3-4.6 0l-2.7 2.7c-1-2-2.7-3-4.5-3Z"></path></svg>
+              </div>
+              <h3 class="text-xl font-semibold text-foreground">
+                AI/ML & Frameworks
+              </h3>
+            </div>
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">TensorFlow</span>
+                  <span class="text-sm text-muted-foreground">80%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">MediaPipe</span>
+                  <span class="text-sm text-muted-foreground">75%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">OpenCV</span>
+                  <span class="text-sm text-muted-foreground">75%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-medium text-foreground">RESTful APIs</span>
+                  <span class="text-sm text-muted-foreground">85%</span>
+                </div>
+                <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary via-accent to-secondary rounded-full transition-all duration-1000 ease-out" style="width: 85%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 max-w-4xl mx-auto">
+          <div class="bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 rounded-2xl p-8 border border-primary/20">
+            <h3 class="text-2xl font-semibold text-center mb-6 text-foreground">
+              Core Strengths
+            </h3>
+            <div class="flex flex-wrap justify-center gap-4">
+              <span class="px-6 py-3 bg-card rounded-full text-sm font-medium border border-border hover:border-primary hover:shadow-glow transition-all duration-300 animate-scale-in" style="animation-delay: 0s;">
+                Data Structures & Algorithms
+              </span>
+              <span class="px-6 py-3 bg-card rounded-full text-sm font-medium border border-border hover:border-primary hover:shadow-glow transition-all duration-300 animate-scale-in" style="animation-delay: 0.05s;">
+                Object-Oriented Programming
+              </span>
+              <span class="px-6 py-3 bg-card rounded-full text-sm font-medium border border-border hover:border-primary hover:shadow-glow transition-all duration-300 animate-scale-in" style="animation-delay: 0.1s;">
+                RESTful API Development
+              </span>
+              <span class="px-6 py-3 bg-card rounded-full text-sm font-medium border border-border hover:border-primary hover:shadow-glow transition-all duration-300 animate-scale-in" style="animation-delay: 0.15s;">
+                Full-Stack Development
+              </span>
+              <span class="px-6 py-3 bg-card rounded-full text-sm font-medium border border-border hover:border-primary hover:shadow-glow transition-all duration-300 animate-scale-in" style="animation-delay: 0.2s;">
+                Machine Learning
+              </span>
+              <span class="px-6 py-3 bg-card rounded-full text-sm font-medium border border-border hover:border-primary hover:shadow-glow transition-all duration-300 animate-scale-in" style="animation-delay: 0.25s;">
+                Problem Solving
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coding-profiles" class="py-20 bg-background">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 animate-fade-in-up">
+          Coding <span class="text-primary">Profiles</span>
+        </h2>
+        <p class="text-center text-muted-foreground mb-12 text-lg">
+          Active problem solver across multiple platforms
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-6 p-4 rounded-xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+                  <h3 class="text-2xl font-bold text-white">LeetCode</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-white opacity-70"><polyline points="22 7 13.5 15.5 10 12 2 20"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              </div>
+
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between items-center pb-3 border-b border-border">
+                  <span class="text-sm text-muted-foreground">Problems Solved</span>
+                  <span class="font-semibold text-2xl text-primary">77</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Easy</span>
+                  <span class="font-semibold text-lg text-foreground">64</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Medium</span>
+                  <span class="font-semibold text-lg text-foreground">13</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Acceptance Rate</span>
+                  <span class="font-semibold text-lg text-foreground">70.26%</span>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Top Skills:
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-muted rounded-lg text-xs text-muted-foreground">
+                    Dynamic Programming (6)
+                  </span>
+                  <span class="px-3 py-1 bg-muted rounded-lg text-xs text-muted-foreground">
+                    Math (25)
+                  </span>
+                  <span class="px-3 py-1 bg-muted rounded-lg text-xs text-muted-foreground">
+                    Hash Table (18)
+                  </span>
+                </div>
+              </div>
+
+              <a href="https://leetcode.com/u/harikaseelam/" target="_blank" rel="noopener noreferrer" class="btn mt-auto w-full bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+                View Profile
+              </a>
+            </div>
+          </div>
+          
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0.1s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-6 p-4 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="m15.4 17.5 1.4-1.4c2.8-2.8 2.8-7.7 0-10.6-2.8-2.8-7.7-2.8-10.6 0l-1.4 1.4"></path><path d="m2 22 2-2 1.4 1.4c2.5 2.5 6.4 2.5 8.9 0s2.5-6.4 0-8.9l-1.4-1.4-2 2"></path><path d="m16 9-2 2 1.4 1.4c1.1 1.1 2.9 1.1 4 0s1.1-2.9 0-4l-1.4-1.4-2 2"></path></svg>
+                  <h3 class="text-2xl font-bold text-white">HackerRank</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-white opacity-70"><polyline points="22 7 13.5 15.5 10 12 2 20"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              </div>
+
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between items-center pb-3 border-b border-border">
+                  <span class="text-sm text-muted-foreground">Python Certificate</span>
+                  <span class="font-semibold text-2xl text-primary">Verified</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Problem Solving</span>
+                  <span class="font-semibold text-lg text-foreground">Active</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Skills</span>
+                  <span class="font-semibold text-lg text-foreground">10+</span>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Certifications:
+                </h4>
+                <ul class="space-y-2">
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2">✓</span>
+                    Python (Basic) - Verified
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2">✓</span>
+                    Problem Solving
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2">✓</span>
+                    C Language
+                  </li>
+                </ul>
+              </div>
+
+              <a href="https://www.hackerrank.com/profile/harikaseelam2004" target="_blank" rel="noopener noreferrer" class="btn mt-auto w-full bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+                View Profile
+              </a>
+            </div>
+          </div>
+
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0.2s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-6 p-4 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M12 15V3"></path><path d="m4 11 8 8 8-8"></path><path d="M7 21h10"></path></svg>
+                  <h3 class="text-2xl font-bold text-white">GitHub</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-white opacity-70"><polyline points="22 7 13.5 15.5 10 12 2 20"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              </div>
+
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between items-center pb-3 border-b border-border">
+                  <span class="text-sm text-muted-foreground">Contributions (2025)</span>
+                  <span class="font-semibold text-2xl text-primary">201</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Public Repos</span>
+                  <span class="font-semibold text-lg text-foreground">6+</span>
+                </div>
+                <div class="flex justify-between items-center ">
+                  <span class="text-sm text-muted-foreground">Stars Earned</span>
+                  <span class="font-semibold text-lg text-foreground">2</span>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Featured Projects:
+                </h4>
+                <ul class="space-y-2">
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2">▸</span>
+                    Gesture Recognition System
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2">▸</span>
+                    Traffic Volume Prediction ML
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2">▸</span>
+                    Web Development Projects
+                  </li>
+                </ul>
+              </div>
+
+              <a href="https://github.com/harika1807" target="_blank" rel="noopener noreferrer" class="btn mt-auto w-full bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+                View Profile
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+          <div class="p-8 rounded-lg border bg-gradient-to-br from-card to-muted/30 border-border">
+            <h3 class="text-2xl font-bold text-center mb-8 text-foreground">
+              GitHub Activity Overview
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div class="bg-background rounded-xl p-6 border border-border">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-muted-foreground">2025 Contributions</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-primary"><path d="M12 15V3"></path><path d="m4 11 8 8 8-8"></path><path d="M7 21h10"></path></svg>
+                  </div>
+                  <p class="text-4xl font-bold text-primary">201</p>
+                  <p class="text-sm text-muted-foreground mt-2">
+                    Consistently active throughout the year
+                  </p>
+                </div>
+                <div class="bg-background rounded-xl p-6 border border-border">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-muted-foreground">Public Repositories</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-accent"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+                  </div>
+                  <p class="text-4xl font-bold text-accent">6+</p>
+                  <p class="text-sm text-muted-foreground mt-2">
+                    Full-stack & ML projects
+                  </p>
+                </div>
+              </div>
+              <div class="bg-background rounded-xl p-6 border border-border">
+                <h4 class="font-semibold text-foreground mb-4">
+                  Most Used Languages
+                </h4>
+                <div class="space-y-3">
+                  <div>
+                    <div class="flex justify-between text-sm mb-1">
+                      <span class="text-foreground">Python</span>
+                      <span class="text-muted-foreground">45%</span>
+                    </div>
+                    <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                      <div class="h-full bg-blue-500 rounded-full transition-all duration-1000" style="width: 45%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-sm mb-1">
+                      <span class="text-foreground">Java</span>
+                      <span class="text-muted-foreground">25%</span>
+                    </div>
+                    <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                      <div class="h-full bg-red-500 rounded-full transition-all duration-1000" style="width: 25%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-sm mb-1">
+                      <span class="text-foreground">JavaScript</span>
+                      <span class="text-muted-foreground">15%</span>
+                    </div>
+                    <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                      <div class="h-full bg-yellow-500 rounded-full transition-all duration-1000" style="width: 15%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-sm mb-1">
+                      <span class="text-foreground">HTML/CSS</span>
+                      <span class="text-muted-foreground">15%</span>
+                    </div>
+                    <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                      <div class="h-full bg-purple-500 rounded-full transition-all duration-1000" style="width: 15%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-background">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 animate-fade-in-up">
+          Featured <span class="text-primary">Projects</span>
+        </h2>
+        <p class="text-center text-muted-foreground mb-12 text-lg">
+          Building innovative solutions with modern technologies
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-4">
+                <div class="flex items-start justify-between gap-2 mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    Gesture Recognition System
+                  </h3>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <span class="flex items-center gap-1 text-sm text-muted-foreground">
+                      <span class="text-yellow-500">★</span> 1
+                    </span>
+                    <a href="https://github.com/harika1807/CodeClauseInternship_GestureRecognitionSystem" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" class="w-10 h-10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path></svg>
+                    </a>
+                  </div>
+                </div>
+                <p class="text-sm text-muted-foreground mb-4">
+                  April 2025 - May 2025
+                </p>
+              </div>
+              <p class="text-muted-foreground mb-6 leading-relaxed">
+                Real-time hand gesture recognition system using Python, MediaPipe, and CNN (TensorFlow) achieving 96% accuracy. Reduced prediction latency by 40% with optimized Random Forest integration.
+              </p>
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Key Achievements:
+                </h4>
+                <ul class="space-y-2">
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 96% accuracy rate
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 40% latency reduction
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 1,200+ images processed
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 28% model robustness improvement
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Python</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">TensorFlow</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">MediaPipe</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">OpenCV</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">CNN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0.1s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-4">
+                <div class="flex items-start justify-between gap-2 mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    Traffic Volume Prediction System
+                  </h3>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <span class="flex items-center gap-1 text-sm text-muted-foreground">
+                      <span class="text-yellow-500">★</span> 1
+                    </span>
+                    <a href="https://github.com/harika1807/TrafficTelligence_Advanced_Traffic_Volume_Estimation_with_Machine_Learning" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" class="w-10 h-10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path></svg>
+                    </a>
+                  </div>
+                </div>
+                <p class="text-sm text-muted-foreground mb-4">
+                  2024 - 2025
+                </p>
+              </div>
+              <p class="text-muted-foreground mb-6 leading-relaxed">
+                Machine learning-based web application predicting traffic volume using weather, date, time, and holiday data. Built with Python, Flask, Random Forest/XGBoost with clean visualization.
+              </p>
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Key Achievements:
+                </h4>
+                <ul class="space-y-2">
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Real-time predictions
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Weather integration
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Clean UI/UX
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Multiple ML models
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Python</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Flask</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Random Forest</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">XGBoost</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">HTML/CSS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0.2s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-4">
+                <div class="flex items-start justify-between gap-2 mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    Handwritten Digit Recognition
+                  </h3>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <a href="https://github.com/harika1807" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" class="w-10 h-10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path></svg>
+                    </a>
+                  </div>
+                </div>
+                <p class="text-sm text-muted-foreground mb-4">
+                  April 2025 - May 2025
+                </p>
+              </div>
+              <p class="text-muted-foreground mb-6 leading-relaxed">
+                CNN model in TensorFlow/Keras with 98.7% MNIST accuracy, integrated with Tkinter GUI for real-time predictions. Preprocessed 70,000+ images with augmentation techniques.
+              </p>
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Key Achievements:
+                </h4>
+                <ul class="space-y-2">
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 98.7% accuracy
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 70,000+ images processed
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 22% robustness improvement
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> 15% better generalization
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">TensorFlow</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Keras</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Tkinter</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Python</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">CNN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50" style="animation-delay: 0.3s;">
+            <div class="p-8 h-full flex flex-col">
+              <div class="mb-4">
+                <div class="flex items-start justify-between gap-2 mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    Web Development Templates
+                  </h3>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <a href="https://github.com/harika1807" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub" class="w-10 h-10 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path></svg>
+                    </a>
+                  </div>
+                </div>
+                <p class="text-sm text-muted-foreground mb-4">
+                  2024
+                </p>
+              </div>
+              <p class="text-muted-foreground mb-6 leading-relaxed">
+                Collection of responsive web templates including Starbucks landing page, ToDo List application, and Basic Calculator with modern UI design.
+              </p>
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-foreground mb-3">
+                  Key Achievements:
+                </h4>
+                <ul class="space-y-2">
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Mobile-friendly designs
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Clean code structure
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Modern UI patterns
+                  </li>
+                  <li class="text-sm text-muted-foreground flex items-start">
+                    <span class="text-primary mr-2 mt-1">▸</span> Cross-browser compatible
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">HTML</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">CSS</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">JavaScript</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium border border-primary/20">Responsive Design</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="https://github.com/harika1807" target="_blank" rel="noopener noreferrer" class="btn btn-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all duration-300 hover:scale-105 flex items-center gap-2 justify-center mx-auto max-w-fit">
+            View All Projects on GitHub
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-muted/30">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 animate-fade-in-up">
+          Experience & <span class="text-primary">Education</span>
+        </h2>
+
+        <div class="max-w-5xl mx-auto space-y-8">
+          <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-xl shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><rect width="20" height="18" x="2" y="3" rx="2"></rect><path d="M12 21V12"></path><path d="M2 3h20"></path><path d="M10 12h4"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div>
+                    <h3 class="text-2xl font-bold text-foreground">
+                      Artificial Intelligence Intern
+                    </h3>
+                    <p class="text-lg text-primary font-semibold">
+                      CodeClause
+                    </p>
+                  </div>
+                  <span class="text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg whitespace-nowrap">
+                    April 2025 - May 2025
+                  </span>
+                </div>
+
+                <ul class="space-y-3 text-muted-foreground">
+                  <li class="flex items-start">
+                    <span class="text-primary mr-3 mt-1">▸</span>
+                    <span>Developed and optimized Python-based modules for 4 AI projects, enhancing functionality and code efficiency</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary mr-3 mt-1">▸</span>
+                    <span>Automated image labelling workflows, reducing manual effort by 40+ hours and improving data pipeline speed by 25%</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary mr-3 mt-1">▸</span>
+                    <span>Collaborated across a 5-member team, presented reports to mentors, and ensured project delivery on time</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary mr-3 mt-1">▸</span>
+                    <span>Delivered 10+ project performance reports to guide decision-making and improve implementation accuracy</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-accent/10 rounded-xl shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent"><rect width="20" height="18" x="2" y="3" rx="2"></rect><path d="M12 21V12"></path><path d="M2 3h20"></path><path d="M10 12h4"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div>
+                    <h3 class="text-2xl font-bold text-foreground">
+                      Web Development Intern
+                    </h3>
+                    <p class="text-lg text-accent font-semibold">
+                      TECHOCTANET SERVICES PVT LTD
+                    </p>
+                  </div>
+                  <span class="text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg whitespace-nowrap">
+                    August 2024 - September 2024
+                  </span>
+                </div>
+
+                <ul class="space-y-3 text-muted-foreground">
+                  <li class="flex items-start">
+                    <span class="text-accent mr-3 mt-1">▸</span>
+                    <span>Designed and developed responsive web applications using HTML, CSS, JavaScript, React, and Node.js</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-accent mr-3 mt-1">▸</span>
+                    <span>Enhanced user experience by implementing accessibility standards and optimizing website performance</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-accent mr-3 mt-1">▸</span>
+                    <span>Collaborated with teams to troubleshoot issues, debug code, and ensure functionality of web applications</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-accent/10 rounded-xl shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-accent"><path d="M2 13.7V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6.3"></path><path d="M8 17.5l-4-4"></path><path d="M8 17.5l4-4"></path><path d="M16 17.5l4-4"></path><path d="M16 17.5l-4-4"></path><path d="M12 5.5l-6 6"></path><path d="M18 11.5l-6-6"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div>
+                    <h3 class="text-2xl font-bold text-foreground">
+                      Bachelor of Technology in Computer Science
+                    </h3>
+                    <p class="text-lg text-primary font-semibold">
+                      Rise Krishna Sai Gandhi Group of Institutions, Ongole
+                    </p>
+                  </div>
+                  <span class="text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg whitespace-nowrap">
+                    Nov 2022 - Apr 2026
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="text-lg font-semibold text-foreground">
+                    CGPA:
+                  </span>
+                  <span class="text-2xl font-bold text-primary">8.6</span>
+                  <span class="text-muted-foreground">/ 10.0</span>
+                </div>
+
+                <p class="text-muted-foreground">
+                  Strong foundation in Data Structures & Algorithms,
+                  Object-Oriented Programming, Database Management, and
+                  Full-Stack Development
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-secondary/10 rounded-xl shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-secondary"><path d="M2 13.7V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6.3"></path><path d="M8 17.5l-4-4"></path><path d="M8 17.5l4-4"></path><path d="M16 17.5l4-4"></path><path d="M16 17.5l-4-4"></path><path d="M12 5.5l-6 6"></path><path d="M18 11.5l-6-6"></path></svg>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                  <div>
+                    <h3 class="text-2xl font-bold text-foreground">
+                      Intermediate (MPC)
+                    </h3>
+                    <p class="text-lg text-primary font-semibold">
+                      Narayana Junior College, Rajahmundry
+                    </p>
+                  </div>
+                  <span class="text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg whitespace-nowrap">
+                    June 2020 - May 2022
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <span class="text-lg font-semibold text-foreground">
+                    CGPA:
+                  </span>
+                  <span class="text-2xl font-bold text-primary">9.5</span>
+                  <span class="text-muted-foreground">/ 10.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
+            <div class="flex items-start gap-4">
+              <div class="p-3 bg-primary/10 rounded-xl shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><path d="m15.4 17.5 1.4-1.4c2.8-2.8 2.8-7.7 0-10.6-2.8-2.8-7.7-2.8-10.6 0l-1.4 1.4"></path><path d="m2 22 2-2 1.4 1.4c2.5 2.5 6.4 2.5 8.9 0s2.5-6.4 0-8.9l-1.4-1.4-2 2"></path><path d="m16 9-2 2 1.4 1.4c1.1 1.1 2.9 1.1 4 0s1.1-2.9 0-4l-1.4-1.4-2 2"></path></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-foreground mb-6">
+                  Certifications & Achievements
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-foreground mb-3">
+                      Certifications:
+                    </h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">🏅</span>
+                        <strong>Python (Basic) - HackerRank (Verified)</strong>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        Java Certification - Intellipaat Academy (2025)
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        Python Development - Udemy (2025)
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        SQL & Databases - IBM (2025)
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        Web Development - Infosys Springboard (2025)
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-foreground mb-3">
+                      Achievements:
+                    </h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">🏆</span>
+                        1st Prize - Technical Paper Presentation on "Cryptography & Cybersecurity" (2025)
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        Workshop: Data Science using Python - Brainovision (2024)
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        Workshop: AI App Development - RGAN & AICTE (2025)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-background relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5"></div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 animate-fade-in-up">
+          Get In <span class="text-primary">Touch</span>
+        </h2>
+        <p class="text-center text-muted-foreground mb-12 text-lg">
+          Let's connect and discuss opportunities
+        </p>
+
+        <div class="max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50">
+              <h3 class="text-2xl font-bold mb-6 text-foreground">
+                Contact Information
+              </h3>
+              <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                  <div class="p-3 bg-primary/10 rounded-xl shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-primary"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.9 5.8a1.5 1.5 0 0 1-1.2 0L2 7"></path></svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-muted-foreground font-medium mb-1">
+                      Email
+                    </p>
+                    <a href="mailto:harikaseelam2004@gmail.com" class="text-foreground hover:text-primary transition-colors text-lg">
+                      harikaseelam2004@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="p-3 bg-primary/10 rounded-xl shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-primary"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 13.33 13.33 0 0 0 .67 2.15 2 2 0 0 1-.78 2.21L5.61 10.6A15.013 15.013 0 0 0 13.4 18.39l2.22-2.22a2 2 0 0 1 2.21-.78 13.33 13.33 0 0 0 2.15.67A2 2 0 0 1 22 16.92z"></path></svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-muted-foreground font-medium mb-1">
+                      Phone
+                    </p>
+                    <a href="tel:+917288911807" class="text-foreground hover:text-primary transition-colors text-lg">
+                      +91 7288911807
+                    </a>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="p-3 bg-primary/10 rounded-xl shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-primary"><path d="M12 20s6-6 6-9a6 6 0 0 0-12 0c0 3 6 9 6 9Z"></path><circle cx="12" cy="11" r="2"></circle></svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-muted-foreground font-medium mb-1">
+                      Location
+                    </p>
+                    <p class="text-foreground text-lg">Ongole, India</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-8 rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-glow transition-all duration-300 animate-fade-in border-border hover:border-primary/50">
+              <h3 class="text-2xl font-bold mb-6 text-foreground">
+                Connect With Me
+              </h3>
+              
+              <div class="space-y-6">
+                <div>
+                  <p class="text-sm text-muted-foreground font-medium mb-4">
+                    Social Profiles
+                  </p>
+                  <div class="grid grid-cols-2 gap-4">
+                    <a href="https://github.com/harika1807" target="_blank" rel="noopener noreferrer" class="btn border border-input bg-background hover:bg-accent hover:text-accent-foreground justify-start gap-3 h-auto py-4 hover:text-foreground transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3-1 6-4 6-8s-2-8-6-8-6 3-6 7c0 .8 0 1.5.8 2.2V11H7v2h2v4a5.5 5.5 0 0 0 2 3h.5V22"></path></svg>
+                      <span class="font-medium">GitHub</span>
+                    </a>
+                    <a href="http://www.linkedin.com/in/harika-devi-seelam-242709256" target="_blank" rel="noopener noreferrer" class="btn border border-input bg-background hover:bg-accent hover:text-accent-foreground justify-start gap-3 h-auto py-4 hover:text-blue-600 transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
+                      <span class="font-medium">LinkedIn</span>
+                    </a>
+                    <a href="https://leetcode.com/u/harikaseelam/" target="_blank" rel="noopener noreferrer" class="btn border border-input bg-background hover:bg-accent hover:text-accent-foreground justify-start gap-3 h-auto py-4 hover:text-orange-500 transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M10 20c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10z"></path></svg>
+                      <span class="font-medium">LeetCode</span>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/harikaseelam2004" target="_blank" rel="noopener noreferrer" class="btn border border-input bg-background hover:bg-accent hover:text-accent-foreground justify-start gap-3 h-auto py-4 hover:text-green-500 transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M12 19.5c.732 0 1.341-.54 1.488-1.25H16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-3.488a1.487 1.487 0 0 1-1.488-1.25V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3.488c.147.71 1.056 1.25 1.488 1.25H8a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4.488c.147.71.756 1.25 1.488 1.25z"></path></svg>
+                      <span class="font-medium">HackerRank</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="pt-6 border-t border-border">
+                  <p class="text-sm text-muted-foreground font-medium mb-4">
+                    Download Resume
+                  </p>
+                  <button class="btn btn-lg w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download CV
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 md:p-12 bg-gradient-to-br from-primary via-accent to-secondary text-primary-foreground text-center border-0 rounded-lg shadow-sm animate-fade-in md:col-span-2">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">
+              Ready to collaborate?
+            </h3>
+            <p class="text-lg mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
+              I'm actively seeking opportunities in software development and always open to discussing exciting projects. Let's build something amazing together!
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+              <a href="mailto:harikaseelam2004@gmail.com" class="btn btn-lg bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"></path><path d="m22 7-8.9 5.8a1.5 1.5 0 0 1-1.2 0L2 7"></path></svg>
+                Send Email
+              </a>
+              <a href="http://www.linkedin.com/in/harika-devi-seelam-242709256" target="_blank" rel="noopener noreferrer" class="btn btn-lg bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg>
+                Connect on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-muted/50 border-t border-border py-8">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-muted-foreground text-sm text-center md:text-left">
+            © <span id="current-year">2024</span> Harikadevi Seelam. All rights reserved.
+          </p>
+          
+          <p class="text-muted-foreground text-sm flex items-center gap-2">
+            Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-primary fill-primary"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg> using React & Tailwind CSS
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
+      });
+    </script>
+  </body>
+</html>
